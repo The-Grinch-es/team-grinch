@@ -16,16 +16,28 @@
 //
 //     All distance should be calculated to two decimal places.
 
-function iTri(s){
-    var distance = 2.4 + 112 + 26.2;
+
+/*
+swim - 2.4
+bike - 112
+run - 26.2
+ */
+var totalMiles = 2.4 + 112 + 26.2;
+
+function iTri(s) {
+
     if (s === 0) return 'Starting Line... Good Luck!';
+
     if (s <= 2.4)
-        return ("Swim: " + distance.toFixed(2) + " to go!");
+        return ("Swim: " + totalMiles.toFixed(2) + " to go!");
+
     if (s <= 114.4)
-        return ("Bike: " + distance.toFixed(2) + " to go!");
+        return ("Bike: " + totalMiles.toFixed(2) + " to go!");
+
     if (s <= 127)
-        return ("Run: " + distance.toFixed(2) + " to go!");
-    if (s < distance) return ("Run: Almost done!");
+        return ("Run: " + totalMiles.toFixed(2) + " to go!");
+
+    if (s < totalMiles) return ("Run: Nearly there!");
     return "You're done! Stop running!";
 }
 
@@ -33,4 +45,5 @@ console.log(iTri(0));
 console.log(iTri(2));
 console.log(iTri(114));
 console.log(iTri(127));
-console.log(iTri(127));
+console.log(iTri(140));
+console.log(iTri(140.6));
