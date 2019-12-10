@@ -22,7 +22,6 @@ swim - 2.4
 bike - 112
 run - 26.2
  */
-// var totalMiles = 2.4 + 112 + 26.2;
 
 function iTri(s) {
 
@@ -31,22 +30,26 @@ function iTri(s) {
     if (s === 0) return 'Starting Line... Good Luck!';
 
     if (s <= 2.4)
-        return ("Swim: " + (miles.toFixed(2)-s) + " to go!");
+        return ("Swim: " + (miles - s).toFixed(2) + " to go!");
 
     if (s <= 114.4)
-        return ("Bike: " + (miles.toFixed(2)-s) + " to go!");
+        return ("Bike: " + (miles - s).toFixed(2) + " to go!");
 
-    if (s <= 130)
-        return ("Run: " + (miles.toFixed(2)-s) + " to go!");
+    if (s <= 130.6)
+        return ("Run: " + (miles - s).toFixed(2) + " to go!");
 
     if (s < miles) return ("Run: Nearly there!");
     return "You're done! Stop running!";
 }
 
-
 console.log(iTri(0));
+console.log("----------");
 console.log(iTri(2));
-console.log(iTri(114));
+console.log("----------");
+console.log(iTri(113));
+console.log("----------");
 console.log(iTri(127));
+console.log("----------");
 console.log(iTri(131));
+console.log("----------");
 console.log(iTri(140.6));
