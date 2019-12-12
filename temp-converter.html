@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Asap:400,500,700&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: black;
+        }
+
+        div {
+            height: 33.33vh;
+        }
+
+        #fahrenheit {
+            border-top: 4px solid white;
+            border-bottom: 4px solid white;
+        }
+
+        ::placeholder {
+            color: #222222;
+        }
+
+
+        /*::-webkit-input-placeholder {*/
+        /*    color: #222222;*/
+        /*}*/
+
+        /*::-moz-placeholder{*/
+        /*    color #222222;*/
+        /*}*/
+
+        input[type=number] {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            background: black;
+            color: white;
+            font-size: 10em;
+            text-align: center;
+            border: 0;
+            font-family: 'Asap', sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+<div id="celsius">
+    <input type="number" placeholder="Celsius">
+
+</div>
+
+<div id="fahrenheit">
+    <input type="number" placeholder="Fahrenheit">
+
+</div>
+
+<div id="kelvin">
+    <input type="number" placeholder="Kelvin">
+
+</div>
+
+<script>
+    const celsiusInput = document.querySelector('#celsius > input');
+
+    const fahrenheitInput = document.querySelector('#fahrenheit > input');
+
+    const kelvinInput = document.querySelector('#kelvin > input');
+
+    function roundNum(num) { // will round down to the nearest 100th place
+        return Math.round(num * 100) / 100;
+    }
+
+
+    function celsiusToFahrenheitKelvin() {
+        const cTemp = parseFloat(celsiusInput.value);
+        const fTemp = (cTemp * (9 / 5)) + 32;
+        const kTemp = (cTemp + 273.15);
+        fahrenheitInput.value = roundNum(fTemp);
+        kelvinInput.value = roundNum(kTemp);
+    }
+
+
+    function fahrenheitToCelsiusKelvin() {
+        const fTemp = parseFloat(fahrenheitInput.value);
+        const cTemp = (fTemp - 32) * (5 / 9);
+        const kTemp = (fTemp + 459.67) * (5 / 9);
+        celsiusInput.value = roundNum(cTemp);
+        kelvinInput.value = roundNum(kTemp);
+    }
+
+    function kelvinToFahrenheitCelsius() {
+        const kTemp = parseFloat(kelvinInput.value);
+        const cTemp = (kTemp - 273.15);
+        const fTemp = 9 / 5 * (kTemp - 273) * 32;
+        fahrenheitInput.value = roundNum(fTemp);
+        celsiusInput.value = roundNum(cTemp);
+    }
+
+    function main() {
+        celsiusInput.addEventListener('input', celsiusToFahrenheitKelvin);
+        fahrenheitInput.addEventListener('input', fahrenheitToCelsiusKelvin);
+        kelvinInput.addEventListener('input', kelvinToFahrenheitCelsius);
+    }
+
+    main();
+
+</script>
+
+</body>
+</html>
