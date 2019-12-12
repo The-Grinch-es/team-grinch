@@ -1,7 +1,5 @@
 
 function addWithSurcharge(x,y){
-
-
     if(!isNaN(x)){
 
         if(x <= 10){
@@ -17,8 +15,6 @@ function addWithSurcharge(x,y){
             console.log(x + 'c-x');
         }
     }
-
-
     if(!isNaN(y)){
         if(y <= 10){
             y = y + 1;
@@ -35,7 +31,6 @@ function addWithSurcharge(x,y){
     }
 
     return x + y;
-
 }
 
 console.log(addWithSurcharge(11, 10));
