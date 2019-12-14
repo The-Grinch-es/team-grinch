@@ -1,21 +1,17 @@
 
 
-// var x = [];
 
 function mysteryFunc (x){
-    // x= [];
-    // console.log(x);
+
     var newX = (""+x).split('');
-    // console.log(newX);
     var sum = 1;
     for(var i = 0; i <= newX.length -1; i++){
         sum *= (newX[i]);
     }
 
-    // var sum = ((newX[0]) * (newX[1]) * (newX[2]));
     return sum;
 }
 
 console.log(mysteryFunc(152));
-
-// 19 =nan
+console.log(mysteryFunc(228));
+console.log(mysteryFunc(124));
