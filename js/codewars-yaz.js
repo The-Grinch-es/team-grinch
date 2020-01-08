@@ -131,7 +131,7 @@ console.log(cityFacts({
     continent: 'Europe'
 }));*/
 
-//TODO: Oh no, Timmy's created an infinite loop! Help Timmy find and fix the bug in his unfinished For Loop!
+//Oh no, Timmy's created an infinite loop! Help Timmy find and fix the bug in his unfinished For Loop!
 
 // function createArray(number) {
 //     var newArray = [];
@@ -143,7 +143,7 @@ console.log(cityFacts({
 //     return newArray;
 // }
 
-//TODO: Finish the uefaEuro2016() function so it return string just like in the examples below:
+//Finish the uefaEuro2016() function so it return string just like in the examples below:
 
 // uefaEuro2016(['Germany', 'Ukraine'],[2, 0]) // "At match Germany - Ukraine, Germany won!"
 // uefaEuro2016(['Belgium', 'Italy'],[0, 2]) // "At match Belgium - Italy, Italy won!"
@@ -157,3 +157,75 @@ console.log(cityFacts({
 // console.log(uefaEuro2016(['Germany', 'Ukraine'], [2, 0])); // "At match Germany - Ukraine, Germany won!"
 // console.log(uefaEuro2016(['Belgium', 'Italy'], [0, 2])); // "At match Belgium - Italy, Italy won!"
 // console.log(uefaEuro2016(['Portugal', 'Iceland'], [1, 1])); // "At match Portugal - Iceland, teams played draw."
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*
+todo Description:
+No self respecting traveller would leave Indonesia without buying a vest sporting the logo of their national beer. I mean, you don't want to offend anyone do you?? Good, I thought not.
+The thing is, although they are sold absolutely everywhere, it's hard to know if you are being ripped off on price. (let's not discuss being ripped off on fashion...).
+So you need to practice your haggling skills. As I understand it there are four methods: light haggle, medium haggle, strong haggle and walk away swearing until you get chased down the street and offered one half price.
+So, given the price of the vest (price) and the haggling strategy (haggle), return the relevant price with discount applied as follows:
+light = 20% medium = 30% heavy = 40% walkandswear = 90%
+If the haggle value is anything other than those specified, you will have offended someone, return 'Run!!'
+Prices are all in Rupia
+*/
+
+// function vestBuy(price, haggle) {
+//     if (haggle === "light") return price * 0.8;
+//     if (haggle === "medium") return price * 0.7;
+//     if (haggle === "heavy") return price * 0.6;
+//     if (haggle === "walkandswear") return price * 0.1;
+//     return "Run!!";
+// }
+
+// console.log(vestBuy(70000, 'light'));
+// console.log(vestBuy(30000, 'medium'));
+// console.log(vestBuy(800000, 'walkandswear'));
+
+/*
+todo Description:
+You've purchased a ready-meal from the supermarket.
+The packaging says that you should microwave it for 4 minutes and 20 seconds, based on a 600W microwave.
+Oh no, your microwave is 800W! How long should you cook this for?!
+Input
+You'll be given 4 arguments:
+1. needed power
+The power of the needed microwave.
+Example: "600W"
+2. minutes
+The number of minutes shown on the package.
+Example: 4
+3. seconds
+The number of seconds shown on the package.
+Example: 20
+4. power
+The power of your microwave.
+Example: "800W"
+Output
+The amount of time you should cook the meal for formatted as a string.
+Example: "3 minutes 15 seconds"
+Note: the result should be rounded up.
+59.2 sec  -->  60 sec  -->  return "1 minute 0 seconds"
+All comments/feedback/translations appreciated.
+*/
+
+// function cookingTime(neededPower, minutes, seconds, power) {
+//     var time = Math.ceil(
+//         ((60 * minutes + seconds) * parseInt(neededPower)) / parseInt(power)
+//     );
+//     return `${Math.floor(time / 60)} minutes ${time % 60} seconds`;
+// }
+
+// console.log(cookingTime("600W", 4, 20, "800W"));
+// console.log(cookingTime("800W", 3, 0, "1200W"));
+// console.log(cookingTime("100W", 8, 45, "50W"));
+// console.log(cookingTime("7500W", 0, 5, "600W"));
+// console.log(cookingTime("450W", 3, 25, "950W"));
+// console.log(cookingTime("21W", 64, 88, "25W"));
+// console.log(cookingTime("83W", 61, 80, "26W"));
+// console.log(cookingTime("38W", 95, 22, "12W"));
+
+
