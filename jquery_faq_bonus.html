@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery_faq.html</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #A5A7AD;
+            background:url("img/clouds.jpg") ;
+            background-size: cover;
+            color: #444A51;
+        }
+        li{
+            list-style: none;
+        }
+
+        img {
+            border-bottom-color:#ffe;
+            border-left-color:#eed;
+            border-right-color:#eed;
+            border-top-color:#ccb;
+            height:100%;
+            width:100%;
+        }
+        button{
+            width: 10em;
+            height: 1.75em;}
+        a{
+            color: #1969B2;
+        }
+        h3{
+            border-top: 3px solid #444A51;
+            border-bottom: 3px solid #444A51;
+            width: 90%;
+            text-align: center;
+            color: #444A51;
+            font-size: 1.25em;
+            padding-left: .25em;
+            font-weight: lighter;
+            /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+        }
+
+        .classWithShadow{
+            animation-duration: 0.25s;
+            border-bottom: 2px solid black;
+            border-top: none;
+            color: black;
+            font-size: 1.75em;
+            font-weight: lighter;
+            border-left: 6px solid darkblue;
+            width: 95%;
+            box-shadow: 0 10px 10px -10px #333;
+        }
+        .invisible{
+            visibility: hidden;
+        }
+        .fadeInStyle{
+            color: #1969B2;
+            font-size: 1em;
+            text-decoration: underline;
+        }
+        .highlight{
+            background-color: deepskyblue;
+            width: 55%;
+        }
+        .body {
+            display: grid;
+            grid-template-columns: 13% 25% 24% 25% 13%;
+            grid-template-rows: 10% repeat(3, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            width: 100vw;
+            height: 100vh;
+            height:100%;
+            width:100%;
+        }
+
+        .header { grid-area: 1 / 2 / 2 / 5; }
+        .faqs { grid-area: 2 / 3 / 5 / 4; }
+        .frame1 { grid-area: 2 / 2 / 3 / 3; }
+        .frame2 { grid-area: 3 / 2 / 4 / 3; }
+        .frame3 { grid-area: 2 / 4 / 3 / 5; }
+        .frame4 { grid-area: 3 / 4 / 4 / 5; }
+        .newsLetter { grid-area: 1 / 5 / 2 / 6; }
+        .newsletter2 { grid-area: 1 / 1 / 2 / 2; }
+        .button1 { grid-area: 2 / 1 / 3 / 2; }
+        .button2 { grid-area: 3 / 1 / 4 / 2; }
+        .button3 { grid-area: 2 / 5 / 3 / 6; }
+        .button4 { grid-area: 3 / 5 / 4 / 6; }
+
+        .center{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        .notCenter{
+            align-items: flex-start;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .right{
+            padding-left: 9em;
+        }
+
+        .frame {
+            background-color: #ddc;
+            border: solid 5vmin #eee;
+            border-bottom-color: #fff;
+            border-left-color: #eee;
+            border-radius: 2px;
+            border-right-color: #eee;
+            border-top-color: #ddd;
+            box-shadow: 0 0 5px 0 rgba(0, 0, 0, .25) inset, 0 5px 10px 5px rgba(0, 0, 0, .25);
+            box-sizing: border-box;
+            display: inline-block;
+            height:95%;
+            width: 85%;
+            position: relative;
+            text-align: center;
+            margin-left: 1em;
+        }
+        .frame:before {
+            border-radius:2px;
+            bottom:-2vmin;
+            box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
+            content:"";
+            left:-2vmin;
+            position:absolute;
+            right:-2vmin;
+            top:-2vmin;
+        }
+        .frame:after {
+            border-radius:2px;
+            bottom:-2.5vmin;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+            content:"";
+            left:-2.5vmin;
+            position:absolute;
+            right:-2.5vmin;
+            top:-2.5vmin;
+        }
+        .topDown{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8em;
+            margin-left: 5em;
+        }
+        .buttonTop{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 4em;
+            margin-left: 9em;
+        }
+        .rightButtons{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8em;
+            margin-left: .25em;
+        }
+        .paddedLeft{
+            padding-left: 2em;
+        }
+        .paddedRight{
+            padding-right: 2em;
+        }
+
+    </style>
+</head>
+<body class="body">
+
+<div class="header">
+    <div id="header"><h1 class="center">National Park Facts</h1>
+    </div>
+</div>
+
+<div class="faqs text-center">
+    <!--    <button id="highlight-important">Click Me!</button>-->
+    <!--    <button id="dehighlight-important">Click Me!</button>-->
+    <button id="btn-top" class="center buttonTop">Swap Images!</button>
+
+    <!--    <button id="lastHighlight">Click Me!</button>-->
+
+    <!--    <dl>-->
+    <!--        <dt>Hot Springs National Park</dt>-->
+    <!--        <dd>The thermal hot springs waters in this park heat naturally to 143ºF.</dd>-->
+
+    <!--        <dt>Lake Clark National Park</dt>-->
+    <!--        <dd>Lake Clark, centrally located in Lake Clark National Park, is a 50-mile-long clear, turquoise body of water that is fed by glaciers, waterfalls, rivers, and streams.</dd>-->
+
+    <!--        <dt>Mammoth Cave National Park</dt>-->
+    <!--        <dd>Mammoth Cave National Park is the world's longest known cave system, with more than 400 miles explored.</dd>-->
+
+    <!--        <dt>Redwood National Park</dt>-->
+    <!--        <dd>Redwood National Park is home to the world's tallest tree called Hyperion, which earned recognition from the Guinness Book of World Records and remarkably grows on a hill.</dd>-->
+
+    <!--        <dt>Yellowstone National Park</dt>-->
+    <!--        <dd>Yellowstone sits atop the largest supervolcano in North America.</dd>-->
+
+    <!--        <dt>Big Bend National Park</dt>-->
+    <!--        <dd>Historically, people traveled to the Hot Springs Historic District in Big Bend to heal their ailments. Today, visitors can soak in the 105-degree water that gushes from the old foundation of a bathhouse.</dd>-->
+
+    <!--        <dt>Capitol Reef National Park</dt>-->
+    <!--        <dd>The rocks in Capitol Reef National Park are up to 270 million years old.</dd>-->
+
+    <!--        <dt>Channel Islands National Park</dt>-->
+    <!--        <dd>Divers and snorkelers can explore the watery remains of the Winfield Scott shipwreck. Between 1850 and 1900, at least 33 ships were wrecked in the Santa Barbara Channel.</dd>-->
+
+    <!--        <dt>Great Smoky Mountains National Park</dt>-->
+    <!--        <dd>This park is home to over 1,500 types of flowering plants that bloom year-round. A Spring Wildflower Pilgrimage takes places each year, a festival with many guided walks and hikes.</dd>-->
+    <!--    </dl>-->
+
+    <!--===============================================END OF 1ST EXERCISE===============================================-->
+
+
+    <div>
+        <h3 class="styleMe">Sequoia National Park</h3>
+
+        <ul>
+            <li>1.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>2.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>3.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>4.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <h3 class="styleMe">Sequoia National Park</h3>
+
+        <ul>
+            <li>1.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>2.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>3.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>4.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3 class="styleMe">Sequoia National Park</h3>
+
+        <ul>
+            <li>1.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>2.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>3.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+            <li>4.FACTS facts FaCts facts faCTS FActs facts facts FACTS!</li>
+
+        </ul>
+    </div>
+    <a href="https://www.nationalgeographic.com/travel/destinations/north-america/united-states/fun-facts-national-parks/#close">Nat-Geo Travel Destinations</a>
+</div>
+
+<div class="newsLetter paddedRight">
+    <a href="#">Click here to sign up for our news letter!</a>
+    <div id="subscribe">X</div>
+</div>
+
+<div class="newsletter2 paddedLeft">
+    <h2 id="register" class="fadeInStyle">REGISTER FOR THIS SITE!</h2>
+    <div id="registerX">X</div>
+
+</div>
+
+<!--==============================================START IMAGES======================================================-->
+<div class="frame1 frame">
+    <img src="img/fall-trees.jpg" alt="" id="pic1">
+</div>
+<div class="button1">
+    <button class="topDown" id="btn1-left-top">Swap Image</button>
+</div>
+
+<div class="frame2 frame">
+    <img src="img/fog-trees.jpg" alt="" id="pic2">
+</div>
+<div class="button2">
+    <button class="topDown" id="btn1-left-bottom">Swap Image</button>
+</div>
+
+<div class="frame3 frame">
+    <img src="img/winter-trees.jpg" alt="" id="pic3">
+</div>
+<div class="button3">
+    <button class="rightButtons" id="btn1-right-top">Swap Image</button>
+</div>
+
+<div class="frame4 frame">
+    <img src="img/foggy-mountains.jpg" alt="" id="pic4">
+</div>
+<div class="button4">
+    <button class="rightButtons" id="btn1-right-bottom">Swap Image</button>
+</div>
+
+
+
+<!--=================================================START OF SCRIPT=================================================-->
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script>
+    "use strict";
+
+    $(document).ready(function(){
+
+        // $(document).ready(function(){
+        //     $("dd").click(function(){
+        //         $(this).toggleClass("invisible");
+        //     });
+        // });
+
+        function highlight(){
+            $("h3").dblclick(function(){
+                $(this).toggleClass("highlight");
+            });
+        }
+        highlight();
+
+        //$(document).ready(
+        function invisible() {
+            $('#highlight-important').click(function(event) {
+                event.preventDefault();
+                $('li').addClass('invisible');
+            });
+            $('#dehighlight-important').click(function(event) {
+                event.preventDefault();
+                $('li').removeClass('invisible');
+            });
+            // TODO: make the individual important elements click-to-toggle-highlight
+            // $("li").click(function() {
+            //     $(this).toggleClass("invisible");
+            // });
+        }
+        //);
+
+        invisible();
+
+
+        $('#lastHighlight').click(function(){
+            $('ul').each(function(){
+                $(this).children('li').last().css('background-color', 'yellow')
+            })
+        });
+
+        // $('h3').click(function(){
+        //
+        //         $(this).next('ul').children('li').css('font-weight', 'bold')
+        // });
+
+        $('li').click(function(){
+            $(this).parent('ul').children('li').first('li').css('color', 'blue')
+        });
+
+
+
+        $('#subscribe').click(function(){
+            $(this).parent('div').css('display', 'none')
+        });
+
+        $('#header').hide();
+        if ( $( "#header" ).is( ":hidden" ) ) {
+            $( '#header' ).show( 4500 );
+        };
+
+
+        $('#register').hide();
+        $('#register').fadeIn( 8000);
+        $('#register').fadeOut(5000);
+
+        $('#registerX').click(function(){
+            $(this).parent('div').css('display', 'none')
+        });
+
+
+
+        $('h3').next().hide();
+
+        $('h3').click(function() {
+            if ( $( this ).next().is( ":visible" ) ) {
+                $( this ).next().hide( "slow" );
+            } else {
+                $( this ).next().show('slow');
+            }
+        });
+
+        $("h3").hover(function()
+        {$(this).toggleClass('classWithShadow');});
+        // =================================================BONUS==========================================================
+        var randomPic = ['img/fall-trees.jpg','img/fog-trees.jpg','img/winter-trees.jpg','img/foggy-mountains.jpg','img/ooolala.jpg','img/grandcanyon.jpg','img/waterfall.jpg','img/night-bend.jpg'];
+        var changePic = function(){
+            $("#btn-top").click(function(){
+                var randomIndex1 = Math.floor(Math.random() * randomPic.length);
+                var randomIndex2 = (randomIndex1+1)%(randomPic.length);
+                var randomIndex3 = (randomIndex2+1)%(randomPic.length);
+                var randomIndex4 = (randomIndex3+1)%(randomPic.length);
+
+                $('#pic1').attr('src', randomPic[randomIndex1]);
+                $('#pic2').attr('src', randomPic[randomIndex2]);
+                $('#pic3').attr('src', randomPic[randomIndex3]);
+                $('#pic4').attr('src', randomPic[randomIndex4]);
+
+            });
+        };
+        changePic();
+
+        $('#btn1-left-top').click(function(){
+            // var audio = new Audio('audio/ring-get.mp3');
+            // audio.play();
+            var first = $('#pic1').attr('src');
+            var picIndex = 1;
+            //Get random number up to 4, but if it is 1, try again
+            while (picIndex === 1) {
+                picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+            }
+            //Swap images
+            var swap = $('#pic'+ picIndex).attr('src');
+            $('#pic1').attr("src", swap);
+            $('#pic'+ picIndex).attr('src', first);
+        });
+
+
+        $('#btn1-left-bottom').click(function(){
+            // var audio = new Audio('audio/ring-get.mp3');
+            // audio.play();
+            // $('#'+(i+1).toString()).children().first('img').prop('id', 'photo'+Math.ceil((i+1)/3).toString());
+            var first = $('#pic2').attr('src');
+            var picIndex = 2;
+            //Get random number up to 4, but if it is 1, try again
+            while (picIndex === 2) {
+                picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+            }
+            //Swap images
+            var swap = $('#pic'+ picIndex).attr('src');
+            $('#pic2').attr("src", swap);
+            $('#pic'+ picIndex).attr('src', first);
+        });
+
+        $('#btn1-right-top').click(function(){
+            // var audio = new Audio('audio/ring-get.mp3');
+            // audio.play();
+            var first = $('#pic3').attr('src');
+            var picIndex = 3;
+            //Get random number up to 4, but if it is 1, try again
+            while (picIndex === 3) {
+                picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+            }
+            //Swap images
+            var swap = $('#pic'+ picIndex).attr('src');
+            $('#pic3').attr("src", swap);
+            $('#pic'+ picIndex).attr('src', first);
+        });
+        $('#btn1-right-bottom').click(function(){
+            // var audio = new Audio('audio/ring-get.mp3');
+            // audio.play();
+            var first = $('#pic4').attr('src');
+            var picIndex = 4;
+            //Get random number up to 4, but if it is 1, try again
+            while (picIndex === 4) {
+                picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+            }
+            //Swap images
+            var swap = $('#pic'+ picIndex).attr('src');
+            $('#pic4').attr("src", swap);
+            $('#pic'+ picIndex).attr('src', first);
+        });
+
+
+
+
+
+    });
+
+
+</script>
+
+</body>
+</html>
+
+
